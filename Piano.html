@@ -16,18 +16,18 @@
     var ocilators = new Array();
 
     var pararNota = function (ocilator) {
-    	ocilator.noteOff(0);
+    	ocilator.stop(0);
     };
     var tocarNota = function (freq) {
     	var type = (2 % 5) || 0;
     	var o = ac.createOscillator();
-    	var g = ac.createGainNode();
+    	var g = ac.createGain();
     	o.frequency.value = freq;
     	o.type = type;
     	o.connect(g);
     	g.gain.value = .25;
     	g.connect(ac.destination);
-    	o.noteOn(0);
+    	o.start();
     	return o;
     };
 
